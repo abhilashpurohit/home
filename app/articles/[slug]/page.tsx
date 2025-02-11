@@ -9,7 +9,7 @@ interface Article {
 }
 
 interface Props {
-    params: { slug: string } | Promise<any>;
+    params: Promise<any>;
 }
 
 // Caching fetch request to avoid double fetching
