@@ -7,7 +7,7 @@ interface Article {
 }
 
 interface Props {
-    params: { slug: string };
+    params: Promise<any>;
 }
 
 export default async function ArticlePage({params} : Props){
