@@ -8,10 +8,7 @@ const NotoSans = Noto_Sans({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Abhilash Purohit",
-  description: "Writer, Storyteller, and Entrepreneur",
-};
+export const metadata: Metadata = {};
 
 export default function RootLayout({
   children,
