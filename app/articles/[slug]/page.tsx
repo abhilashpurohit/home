@@ -1,7 +1,4 @@
-'use client';
 import { API_URL } from "@/config/api";
-import { useEffect, useState } from "react";
-import { NextResponse } from "next/server";
 
 interface Article {
     slug: string;
@@ -10,31 +7,18 @@ interface Article {
 }
 
 interface Props {
-    params: Promise<{ slug: string }>;
+    params: { slug: string };
 }
 
-export default function Article({params} : Props){
-
-    const [article, setArticle] = useState<Article>();
-
-    useEffect(() => {
-        async function getArticle() {
-            const { slug } = await params;
-            const response = await fetch(`${API_URL}/articles/${slug}`);
-            if(!response.ok){
-                return NextResponse.error();
-            }
-            const articleData: Article = await response.json();
-            setArticle(articleData);
-        }
-        getArticle();
-    },[])
-
+export default async function ArticlePage({params} : Props){
+    const { slug } = await params;
+    const res = await fetch(`${API_URL}/articles/${slug}`);
+    const data = await res.json();
+    const article: Article = data;
     return (
         <div>
-            <p>{article?.slug}</p>
-            <h2 className="font-semibold text-2xl">{article?.title}</h2>
-            <p>{article?.content}</p>
+            <h2>{article.title}</h2>
+            <p>{article.content}</p>
         </div>
     );
 }
