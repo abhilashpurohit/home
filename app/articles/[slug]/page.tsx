@@ -13,11 +13,16 @@ interface Props {
 export default async function Article({params} : Props){
     const { slug } = await params;
     const res = await fetch(`${API_URL}/articles/${slug}`);
-    const article: Article = await res.json();
+    const data = await res.json();
+    const articles: Article[] = data.articles;
     return (
-        <div key={article.slug}>
-            <h2 className="text-2xl font-semibold">{article.title}</h2>
-            <p>{article.content}</p>
+        <div>
+            {articles.map((article) => (
+                <div key={article.title}>
+                    <h2>{article.title}</h2>
+                    <p>{article.content}</p>
+                </div>
+            ))}
         </div>
     );
 }
