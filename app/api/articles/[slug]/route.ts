@@ -5,8 +5,8 @@ interface Props {
     params: {slug: string};
 }
 
-export async function GET(request: NextRequest, {params}: Props) {
-  const { slug } = params;
+export async function GET(request: NextRequest, context: {params: {slug: string}}) {
+  const { slug } = context.params;
   const response = await db.collection('articles').where("slug", "==", slug).get();
   const article = response.docs[0].data();
   return NextResponse.json(article);
