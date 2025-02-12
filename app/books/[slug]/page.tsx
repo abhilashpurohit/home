@@ -1,6 +1,6 @@
 import { API_URL } from "@/config/api"
 import type { Metadata } from "next"
-import BookContent from "./BookContent"
+import BookContent from "../../components/BookContent"
 
 interface Books {
   author: string
