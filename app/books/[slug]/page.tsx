@@ -22,7 +22,8 @@ async function getBook(slug: string): Promise<Books> {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const book = await getBook(params.slug)
+    const { slug } = await params;
+  const book = await getBook(slug)
   return {
     title: book.title,
     description: book.blurb,
@@ -30,7 +31,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function BookPage({ params }: Props) {
-  const book = await getBook(params.slug)
+    const { slug } = await params;
+  const book = await getBook(slug)
 
   return <BookContent book={book} />
 }
