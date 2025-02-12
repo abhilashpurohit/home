@@ -12,7 +12,7 @@ export default function Home() {
         <br/><br />
         Check back in a day or so!
       </div>
-      <Link href={"/articles"}>Articles</Link>
+      {/* <Link href={"/articles"}>Articles</Link> */}
     </div>
   );
 }
