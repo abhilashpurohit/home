@@ -10,7 +10,7 @@ interface Books {
 }
 
 interface Props {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
 async function getBook(slug: string): Promise<Books> {
