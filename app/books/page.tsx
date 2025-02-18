@@ -26,7 +26,7 @@ export default function Books(){
         <div>
             {books.map((book) => (
                 <Link href={`/books/${book.slug}`} key={book.slug} className="border p-4 mb-4 block">
-                    <h2>{book.title}</h2>
+                    <h2 className="font-bold text-2xl">{book.title}</h2>
                     <p>{book.author}</p>
                     <p>{book.blurb}</p>
                 </Link>
